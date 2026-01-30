@@ -3,7 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 // Read .env manually
-let uri = 'mongodb://localhost:27017/department-website';
+let uri = 'mongodb+srv://sanskargaikwad659:Skar007@soty.dx1qy.mongodb.net/?appName=SOTY';
 try {
     const envPath = path.resolve(__dirname, '../.env');
     if (fs.existsSync(envPath)) {
