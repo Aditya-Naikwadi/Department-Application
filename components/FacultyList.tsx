@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, Mail, GraduationCap, Briefcase, Users, Award } from "lucide-react";
 import EmptyState from "./ui/EmptyState";
@@ -75,8 +76,14 @@ const FacultyList = () => {
                 </div>
 
                 {loading ? (
-                    <div className="flex justify-center items-center py-20">
-                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-accent"></div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                        {[...Array(10)].map((_, i) => (
+                            <div key={i} className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-100 shadow-sm animate-pulse">
+                                <div className="w-28 h-28 rounded-full bg-gray-200 mb-4"></div>
+                                <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                                <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+                            </div>
+                        ))}
                     </div>
                 ) : facultyData.length === 0 ? (
                     <EmptyState
@@ -98,12 +105,14 @@ const FacultyList = () => {
                                 className="group flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer"
                             >
                                 <div className="relative mb-4">
-                                    <div className="w-28 h-28 rounded-full bg-white p-1 border-2 border-[#D4AF37] transition-all duration-300 shadow-md">
+                                    <div className="w-28 h-28 rounded-full bg-white p-1 border-2 border-[#D4AF37] transition-all duration-300 shadow-md relative overflow-hidden">
                                         {member.image ? (
-                                            <img
+                                            <Image
                                                 src={member.image}
                                                 alt={member.name}
-                                                className="w-full h-full rounded-full object-cover"
+                                                fill
+                                                className="rounded-full object-cover"
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                             />
                                         ) : (
                                             <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-3xl font-serif font-bold text-[#D4AF37]">
@@ -159,10 +168,12 @@ const FacultyList = () => {
                                     <div className="relative -mt-16 flex justify-center shrink-0">
                                         <div className="w-32 h-32 rounded-full border-4 border-white bg-white shadow-lg overflow-hidden flex items-center justify-center">
                                             {selectedFaculty.image ? (
-                                                <img
+                                                <Image
                                                     src={selectedFaculty.image}
                                                     alt={selectedFaculty.name}
-                                                    className="w-full h-full object-cover"
+                                                    fill
+                                                    className="object-cover"
+                                                    sizes="(max-width: 768px) 100vw, 50vw"
                                                 />
                                             ) : (
                                                 <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-4xl font-serif font-bold text-[#D4AF37]">
