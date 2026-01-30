@@ -2,18 +2,11 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, BookOpen } from "lucide-react";
-import { programsData } from "@/lib/data";
+import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
+import { programsData, Program } from "@/lib/data";
 import EmptyState from "./ui/EmptyState";
 
 const ProgramsGrid = () => {
-    interface Program {
-        title: string;
-        description: string;
-        duration: string;
-        seats: string;
-    }
-
     const [activeTab, setActiveTab] = useState<"it" | "cs">("it");
 
     return (
@@ -83,21 +76,42 @@ const ProgramsGrid = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                     {programsData[activeTab].map((program: Program) => (
                                         <motion.div
-                                            key={program.title}
+                                            key={program.id}
                                             initial={{ opacity: 0, scale: 0.95 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             whileHover={{ y: -5 }}
-                                            className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 group flex flex-col h-full"
+                                            className={`relative bg-white rounded-2xl p-8 shadow-sm border hover:shadow-xl transition-all duration-300 group flex flex-col h-full ${program.featured ? 'border-accent ring-1 ring-accent/20' : 'border-gray-100'}`}
                                         >
-                                            <h3 className="text-2xl font-bold text-[#2c3e50] mb-3 group-hover:text-primary transition-colors">{program.title}</h3>
+                                            {program.featured && (
+                                                <div className="absolute top-4 right-4 animate-pulse">
+                                                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-accent text-white shadow-sm">
+                                                        <Sparkles className="w-3 h-3" /> FEATURED
+                                                    </span>
+                                                </div>
+                                            )}
+
+                                            <h3 className="text-2xl font-bold text-[#2c3e50] mb-3 group-hover:text-primary transition-colors pr-8">{program.title}</h3>
                                             <p className="text-gray-600 mb-6 flex-grow leading-relaxed">{program.description}</p>
 
-                                            <div className="space-y-4 mb-8">
-                                                <div className="flex items-center gap-2 text-sm text-gray-600">
-                                                    <span className="font-bold text-primary">Duration:</span> {program.duration}
+                                            {/* Tags */}
+                                            {program.tags && program.tags.length > 0 && (
+                                                <div className="flex flex-wrap gap-2 mb-6">
+                                                    {program.tags.map(tag => (
+                                                        <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-semibold rounded-full border border-gray-200">
+                                                            {tag}
+                                                        </span>
+                                                    ))}
                                                 </div>
-                                                <div className="flex items-center gap-2 text-sm text-gray-600">
-                                                    <span className="font-bold text-primary">Seats:</span> {program.seats}
+                                            )}
+
+                                            <div className="space-y-4 mb-8 pt-6 border-t border-gray-100">
+                                                <div className="flex justify-between items-center text-sm text-gray-600">
+                                                    <span className="font-bold text-gray-900">Duration</span>
+                                                    <span>{program.duration}</span>
+                                                </div>
+                                                <div className="flex justify-between items-center text-sm text-gray-600">
+                                                    <span className="font-bold text-gray-900">Seats</span>
+                                                    <span>{program.seats}</span>
                                                 </div>
                                             </div>
 
