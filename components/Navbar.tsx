@@ -46,15 +46,9 @@ const Navbar = () => {
                     {/* Logo */}
                     <div className="flex-shrink-0">
                         <Link href="/" className="flex items-center group">
-                            <div className="relative w-16 h-16 bg-white rounded-full shadow-xl flex items-center justify-center border-2 border-gray-100 overflow-hidden hover:scale-105 transition-transform duration-300">
-                                <Image
-                                    src="/college-logo.png"
-                                    alt="College Logo"
-                                    fill
-                                    className="object-contain p-0.5"
-                                    priority
-                                />
-                            </div>
+                            <span className={clsx("text-2xl font-bold font-serif tracking-tight transition-colors", scrolled ? "text-primary" : "text-white")}>
+                                CS & IT
+                            </span>
                         </Link>
                     </div>
 
@@ -94,19 +88,19 @@ const Navbar = () => {
                         >
                             Apply Now
                         </Link>
-                        <div className="relative w-20 h-20 bg-white rounded-full shadow-xl flex items-center justify-center border-2 border-gray-100 overflow-hidden hover:scale-110 transition-transform duration-300 cursor-pointer">
+                        <div className="relative w-20 h-20 hover:scale-110 transition-transform duration-300 cursor-pointer bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/20 p-1">
                             <Image
                                 src="/department-logo.png"
                                 alt="Department Logo"
                                 fill
-                                className="object-contain p-0.5"
+                                className="object-contain p-1"
                             />
                         </div>
                     </div>
 
                     {/* Mobile menu button */}
                     <div className="lg:hidden flex items-center gap-3">
-                        <div className="relative w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center border-2 border-gray-100 overflow-hidden hover:scale-110 transition-transform duration-300">
+                        <div className="relative w-12 h-12 hover:scale-110 transition-transform duration-300 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/20 p-0.5">
                             <Image
                                 src="/department-logo.png"
                                 alt="Department Logo"
