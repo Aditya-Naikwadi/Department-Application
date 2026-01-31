@@ -23,9 +23,9 @@ const Hero = () => {
                     className="object-cover"
                     priority
                 />
-                {/* Subtle Dark Blue Overlay */}
-                <div className="absolute inset-0 bg-primary/60 mix-blend-multiply" />
-                <div className="absolute inset-0 bg-black/20" /> {/* Extra dimming for text readability */}
+                {/* Subtle Dark Blue Overlay - Standard opacity blend is faster than mix-blend */}
+                <div className="absolute inset-0 bg-primary/60" />
+                <div className="absolute inset-0 bg-black/10" /> {/* Reduced dimming */}
             </div>
 
             {/* Content */}

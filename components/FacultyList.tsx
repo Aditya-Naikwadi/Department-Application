@@ -66,16 +66,16 @@ const FacultyList = () => {
                                     transition={{ delay: index * 0.05 }}
                                     whileHover={{ y: -5 }}
                                     onClick={() => setSelectedFaculty(member)}
-                                    className="group flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                                    className="group flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer will-change-transform"
                                 >
-                                    <div className="w-28 h-28 rounded-full bg-white p-1 border-2 border-[#D4AF37] transition-all duration-300 shadow-md relative overflow-hidden">
+                                    <div className="w-28 h-28 rounded-full bg-white p-1 border-2 border-[#D4AF37] transition-all duration-300 shadow-sm relative overflow-hidden">
                                         {member.image ? (
                                             <Image
                                                 src={member.image}
                                                 alt={member.name}
                                                 fill
                                                 className="rounded-full object-cover object-[50%_25%]"
-                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 20vw"
                                             />
                                         ) : (
                                             <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-3xl font-serif font-bold text-[#D4AF37]">
