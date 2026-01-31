@@ -1,52 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, Mail, GraduationCap, Briefcase, Users, Award } from "lucide-react";
 import EmptyState from "./ui/EmptyState";
-
-interface FacultyMember {
-    _id: string;
-    name: string;
-    designation: string;
-    qualification: string;
-    experience: string;
-    achievements: string;
-    subjects: string;
-    email: string;
-    image?: string;
-    bio?: string;
-}
+import { facultyData, FacultyMember } from "../data/faculty";
 
 const FacultyList = () => {
-    const [searchQuery, setSearchQuery] = useState("");
     const [selectedFaculty, setSelectedFaculty] = useState<FacultyMember | null>(null);
-    const [facultyData, setFacultyData] = useState<FacultyMember[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [searchQuery, setSearchQuery] = useState("");
 
-    useEffect(() => {
-        const fetchFaculty = async () => {
-            try {
-                const response = await fetch('/api/faculty');
-                const data = await response.json();
-
-                if (Array.isArray(data)) {
-                    setFacultyData(data);
-                } else {
-                    console.error("Expected array but got:", data);
-                    setFacultyData([]);
-                }
-            } catch (error) {
-                console.error("Error fetching faculty:", error);
-                setFacultyData([]);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchFaculty();
-    }, []);
-
+    // Use static data directly
     const filteredFaculty = facultyData.filter((member) =>
         member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         member.subjects.toLowerCase().includes(searchQuery.toLowerCase())
@@ -82,17 +47,7 @@ const FacultyList = () => {
                     </div>
                 </div>
 
-                {loading ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                        {[...Array(10)].map((_, i) => (
-                            <div key={i} className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-gray-100 shadow-sm animate-pulse">
-                                <div className="w-28 h-28 rounded-full bg-gray-200 mb-4"></div>
-                                <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                                <div className="h-3 bg-gray-200 rounded w-1/2"></div>
-                            </div>
-                        ))}
-                    </div>
-                ) : facultyData.length === 0 ? (
+                {facultyData.length === 0 ? (
                     <EmptyState
                         icon={Users}
                         title="No faculty members found"
