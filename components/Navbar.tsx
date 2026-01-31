@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
@@ -45,9 +46,15 @@ const Navbar = () => {
                     {/* Logo */}
                     <div className="flex-shrink-0">
                         <Link href="/" className="flex items-center group">
-                            <span className={clsx("text-2xl font-bold font-serif tracking-tight transition-colors", scrolled ? "text-primary" : "text-white")}>
-                                CS & IT
-                            </span>
+                            <div className="relative w-16 h-16 bg-white rounded-full shadow-xl flex items-center justify-center border-2 border-gray-100 overflow-hidden hover:scale-105 transition-transform duration-300">
+                                <Image
+                                    src="/college-logo.png"
+                                    alt="College Logo"
+                                    fill
+                                    className="object-contain p-0.5"
+                                    priority
+                                />
+                            </div>
                         </Link>
                     </div>
 
@@ -87,10 +94,26 @@ const Navbar = () => {
                         >
                             Apply Now
                         </Link>
+                        <div className="relative w-20 h-20 bg-white rounded-full shadow-xl flex items-center justify-center border-2 border-gray-100 overflow-hidden hover:scale-110 transition-transform duration-300 cursor-pointer">
+                            <Image
+                                src="/department-logo.png"
+                                alt="Department Logo"
+                                fill
+                                className="object-contain p-0.5"
+                            />
+                        </div>
                     </div>
 
                     {/* Mobile menu button */}
-                    <div className="lg:hidden flex items-center">
+                    <div className="lg:hidden flex items-center gap-3">
+                        <div className="relative w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center border-2 border-gray-100 overflow-hidden hover:scale-110 transition-transform duration-300">
+                            <Image
+                                src="/department-logo.png"
+                                alt="Department Logo"
+                                fill
+                                className="object-contain p-0.5"
+                            />
+                        </div>
                         <Link
                             href="/apply"
                             className="mr-4 bg-accent hover:bg-amber-700 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg"
@@ -112,46 +135,48 @@ const Navbar = () => {
                             )}
                         </button>
                     </div>
-                </div>
-            </div>
+                </div >
+            </div >
 
             {/* Mobile Menu */}
             <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl overflow-hidden"
-                    >
-                        <div className="px-4 pt-2 pb-6 space-y-1">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className="text-gray-700 hover:text-primary hover:bg-gray-50/50 block px-3 py-3 rounded-md text-base font-medium border-b border-gray-50 last:border-0 transition-colors"
-                                >
-                                    <div className="flex justify-between items-center">
-                                        {link.name}
-                                        {link.hasDropdown && <ChevronDown className="w-4 h-4 text-gray-400" />}
-                                    </div>
-                                </Link>
-                            ))}
-                            <div className="mt-4 pt-4 border-t border-gray-100">
-                                <button
-                                    onClick={() => { setIsOpen(false); openLogin(); }}
-                                    className="block w-full text-center text-gray-700 hover:text-primary font-semibold py-3 hover:bg-gray-50/50 rounded-md transition-colors"
-                                >
-                                    Login / Register
-                                </button>
+                {
+                    isOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl overflow-hidden"
+                        >
+                            <div className="px-4 pt-2 pb-6 space-y-1">
+                                {navLinks.map((link) => (
+                                    <Link
+                                        key={link.name}
+                                        href={link.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className="text-gray-700 hover:text-primary hover:bg-gray-50/50 block px-3 py-3 rounded-md text-base font-medium border-b border-gray-50 last:border-0 transition-colors"
+                                    >
+                                        <div className="flex justify-between items-center">
+                                            {link.name}
+                                            {link.hasDropdown && <ChevronDown className="w-4 h-4 text-gray-400" />}
+                                        </div>
+                                    </Link>
+                                ))}
+                                <div className="mt-4 pt-4 border-t border-gray-100">
+                                    <button
+                                        onClick={() => { setIsOpen(false); openLogin(); }}
+                                        className="block w-full text-center text-gray-700 hover:text-primary font-semibold py-3 hover:bg-gray-50/50 rounded-md transition-colors"
+                                    >
+                                        Login / Register
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </nav>
+                        </motion.div>
+                    )
+                }
+            </AnimatePresence >
+        </nav >
     );
 };
 
