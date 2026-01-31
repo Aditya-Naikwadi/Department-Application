@@ -5,10 +5,10 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, Mail, GraduationCap, Briefcase, Users, Award } from "lucide-react";
 import EmptyState from "./ui/EmptyState";
-import { facultyData, FacultyMember } from "../data/faculty";
+import { facultyData, Faculty } from "../lib/data";
 
 const FacultyList = () => {
-    const [selectedFaculty, setSelectedFaculty] = useState<FacultyMember | null>(null);
+    const [selectedFaculty, setSelectedFaculty] = useState<Faculty | null>(null);
     const [searchQuery, setSearchQuery] = useState("");
 
     // Use static data directly
@@ -73,7 +73,7 @@ const FacultyList = () => {
                                                 src={member.image}
                                                 alt={member.name}
                                                 fill
-                                                className="rounded-full object-cover"
+                                                className="rounded-full object-cover object-top"
                                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                             />
                                         ) : (

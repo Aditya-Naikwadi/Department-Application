@@ -8,14 +8,14 @@ export const RAGService = {
         // 1. Search Faculty
         const faculty = facultyData.filter(f =>
             f.name.toLowerCase().includes(lowerQuery) ||
-            f.subject.toLowerCase().includes(lowerQuery) ||
+            f.subjects.toLowerCase().includes(lowerQuery) ||
             f.designation.toLowerCase().includes(lowerQuery)
         );
 
         if (faculty.length > 0) {
             results.push(`Found ${faculty.length} faculty members matching your query:`);
             faculty.slice(0, 3).forEach(f => {
-                results.push(`- ${f.name} (${f.designation}) - Specializes in ${f.subject}`);
+                results.push(`- ${f.name} (${f.designation}) - Specializes in ${f.subjects}`);
             });
             if (faculty.length > 3) results.push(`...and ${faculty.length - 3} others.`);
         }
