@@ -74,7 +74,7 @@ const FacultyList = () => {
                                                 src={member.image}
                                                 alt={member.name}
                                                 fill
-                                                className="rounded-full object-cover object-[50%_25%]"
+                                                className="rounded-full object-cover object-top"
                                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 20vw"
                                             />
                                         ) : (
@@ -146,7 +146,7 @@ const FacultyList = () => {
                                                     src={selectedFaculty.image}
                                                     alt={selectedFaculty.name}
                                                     fill
-                                                    className="object-cover object-[50%_25%]"
+                                                    className="object-cover object-top"
                                                     sizes="(max-width: 768px) 100vw, 50vw"
                                                 />
                                             ) : (
