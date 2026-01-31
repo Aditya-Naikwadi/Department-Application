@@ -53,7 +53,7 @@ export const facultyData: Faculty[] = [
         id: 1,
         _id: "25",
         name: "Esmita Gupta",
-        designation: "Vice Principal",
+        designation: "Sr. Vice Principal, Cheif Technology Officer,HoD IT",
         qualification: "Not Provided",
         experience: "Not Provided",
         specialization: "IT",
@@ -69,7 +69,7 @@ export const facultyData: Faculty[] = [
         id: 2,
         _id: "23",
         name: "Vinod Rajput",
-        designation: "Assistant Professor",
+        designation: "Assistant Professor, HoD Computer Science",
         qualification: "Not Provided",
         experience: "Not Provided",
         specialization: "CS",
@@ -85,7 +85,7 @@ export const facultyData: Faculty[] = [
         id: 3,
         _id: "3",
         name: "Akash Kamble",
-        designation: "Assistant Professor",
+        designation: "Assistant Professor, Coordinator of Cyber Security & Forensics",
         qualification: "MSc IT",
         experience: "11",
         specialization: "Cyber Security",
@@ -117,7 +117,7 @@ export const facultyData: Faculty[] = [
         id: 5,
         _id: "24",
         name: "Kajal Jaisinghani",
-        designation: "Assistant Professor CS, Coordinator of DS",
+        designation: "Assistant Professor CS, Coordinator of B.Sc. Data Science",
         qualification: "MCA, MSc IT, MA(Economics), PhD (Pursuing)",
         experience: "10",
         specialization: "CS",
@@ -428,7 +428,7 @@ export const facultyData: Faculty[] = [
         email: "manasi.mali@bkbck.edu.in",
         phone: "Not Provided",
         image: "/faculty/manasi-mali.jpg",
-        subjects: "IT/Cs Programming",
+        subjects: "IT/Cs Programming, Artificial Intelligence",
         achievements: "Not Provided",
         bio: "Dedicated faculty member with expertise in IT/Cs Programming.",
         qualifications: "MSc AI"
@@ -444,7 +444,7 @@ export const facultyData: Faculty[] = [
         email: "rajeshwari.mistriv@bkbck.edu.in",
         phone: "Not Provided",
         image: "/faculty/rajeshwari-mistri.jpg",
-        subjects: "IT/Cs Programming",
+        subjects: "IT/Cs Programming, Artificial Intelligence",
         achievements: "Not Provided",
         bio: "Dedicated faculty member with expertise in IT/Cs Programming.",
         qualifications: "MSc AI"
@@ -456,13 +456,13 @@ export const facultyData: Faculty[] = [
         designation: "Assistant Professor",
         qualification: "MSc Data Science",
         experience: "1",
-        specialization: "IT/Cs Csf Programming",
+        specialization: "IT/Cs Csf Programming, Data Science",
         email: "omkar.patil@bkbck.edu.in",
         phone: "Not Provided",
         image: "/faculty/omkar-patil.jpg",
-        subjects: "IT/Cs Csf Programming",
+        subjects: "IT/Cs Csf Programming, Data Science",
         achievements: "Not Provided",
-        bio: "Dedicated faculty member with expertise in IT/Cs Csf Programming.",
+        bio: "Dedicated faculty member with expertise in IT/Cs Csf Programming, Data Science.",
         qualifications: "MSc Data Science"
     },
     {
@@ -574,17 +574,17 @@ export const programsData: { it: Program[]; cs: Program[]; certificate: Program[
             description: "A collaborative PG program with industry partners focusing on big data technologies and analytics.",
             duration: "2 Years",
             seats: "40",
-            tags: ["Big Data", "Analytics", "Hadoop"],
+            tags: ["Big Data", "Analytics", "PowerBI"],
             featured: true
         },
-        {
-            id: "mca-it",
-            title: "MCA",
-            description: "Master of Computer Applications program approved by AICTE, for advanced studies in software development and computer applications.",
-            duration: "2 Years",
-            seats: "60",
-            tags: ["Full Stack", "Software Architecture", "Mobile Dev"]
-        }
+        // {
+        //     id: "mca-it",
+        //     title: "MCA",
+        //     description: "Master of Computer Applications program approved by AICTE, for advanced studies in software development and computer applications.",
+        //     duration: "2 Years",
+        //     seats: "60",
+        //     tags: ["Full Stack", "Software Architecture", "Mobile Dev"]
+        // }
     ],
     certificate: [
         {
